@@ -12,7 +12,7 @@ Build a scalable, clean, and automated data pipeline that ingests raw Walmart da
 # Architecture
 
 <p align="center">
-  <img src="images/Architecture.png" width="700"/>
+  <img src="images/System Design.png" width="700"/>
 </p>
 
 
