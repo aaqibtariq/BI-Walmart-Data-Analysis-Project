@@ -77,8 +77,8 @@ From IAM click policy and click Create policy
 
 Click Json and paste below policy
 
-###
 
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -97,9 +97,8 @@ Click Json and paste below policy
   ]
 }
 
+```
 
-
-###
 
 Save policy
 
