@@ -64,16 +64,18 @@ I created as walmart-bi-dev-raw/raw_data/
 Rename files before uploading (important) and upload into folder
 
 
-# Next Step (STEP 2)
-
-# Create IAM Role so Snowflake can read from S3
 
 # STEP 2️⃣: Create policy and IAM Role for Snowflake → S3 access
 
 # Policy
 
-# 1️⃣ From IAM click policy and click Create policy
-# 2️⃣: Click Json and paste below policy
+# 1️⃣ 
+
+From IAM click policy and click Create policy
+
+# 2️⃣
+
+Click Json and paste below policy
 
 ###
 
