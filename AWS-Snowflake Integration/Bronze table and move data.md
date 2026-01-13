@@ -57,3 +57,39 @@ CREATE OR REPLACE TABLE features_bronze (
     isholiday    BOOLEAN
 );
 ```
+
+# Load data with COPY INTO
+
+Load department.csv
+
+```sql
+COPY INTO department_bronze
+FROM @walmart_raw_stage/department.csv
+FILE_FORMAT = (FORMAT_NAME = walmart_csv_ff)
+ON_ERROR = 'ABORT_STATEMENT';
+```
+
+Load stores.csv
+
+```sql
+COPY INTO stores_bronze
+FROM @walmart_raw_stage/stores.csv
+FILE_FORMAT = (FORMAT_NAME = walmart_csv_ff)
+ON_ERROR = 'ABORT_STATEMENT';
+```
+
+Load fact.csv → features_bronze
+
+```sql
+COPY INTO features_bronze
+FROM @walmart_raw_stage/fact.csv
+FILE_FORMAT = (FORMAT_NAME = walmart_csv_ff)
+ON_ERROR = 'ABORT_STATEMENT';
+```
+# Validate row counts
+
+```sql
+SELECT COUNT(*) FROM department_bronze;
+SELECT COUNT(*) FROM stores_bronze;
+SELECT COUNT(*) FROM features_bronze;
+```
