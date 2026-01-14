@@ -35,6 +35,8 @@ dbt Transformations
   ├── Silver (Staging Models)
   ├── Snapshots (SCD Type 2)
   └── Gold (Dimensions & Fact Tables)
+```
+---
 
 🔁 Data Flow (Implemented)
 1️⃣ AWS → Snowflake
