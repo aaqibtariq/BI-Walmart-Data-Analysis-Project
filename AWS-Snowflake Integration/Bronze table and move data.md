@@ -42,7 +42,7 @@ CREATE OR REPLACE TABLE stores_bronze (
 
 #  features_bronze
 ```sql
-CREATE OR REPLACE TABLE features_bronze (
+CREATE OR REPLACE TABLE facts_bronze (
     store        INT,
     date         DATE,
     temperature  FLOAT,
