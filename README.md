@@ -42,17 +42,17 @@ dbt Transformations
 
 1️⃣ AWS → Snowflake
 
-Raw Walmart data uploaded to AWS S3
+- Raw Walmart data uploaded to AWS S3
 
-Snowflake configured to ingest data into raw / staging schemas
+- Snowflake configured to ingest data into raw / staging schemas
 
-Data stored in Snowflake for transformation
+- Data stored in Snowflake for transformation
 
 2️⃣ Silver Layer (Staging Models)
 
 Cleaned and standardized source data using dbt staging models
 
-Models created:
+*Models created:*
 
 - stg_facts
 
@@ -60,15 +60,15 @@ Models created:
 
 - stg_department
 
-Key transformations:
+*Key transformations:*
 
-Column renaming & type casting
+- Column renaming & type casting
 
-Deduplication
+- Deduplication
 
-Standardized naming conventions
+- Standardized naming conventions
 
-Base-level data validation
+- Base-level data validation
 
 3️⃣ Snapshot Layer (SCD Type 2)
 
