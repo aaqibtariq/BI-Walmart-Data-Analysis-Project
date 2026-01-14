@@ -24,7 +24,7 @@ The pipeline is designed for **scalability, data quality, and real-world analyti
 
 ---
 
-## 🏗️ Architecture (What’s Built So Far)
+## 🏗️ Architecture 
 
 ```text
 AWS S3
