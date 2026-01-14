@@ -39,6 +39,7 @@ dbt Transformations
 ---
 
 🔁 Data Flow (Implemented)
+
 1️⃣ AWS → Snowflake
 
 Raw Walmart data uploaded to AWS S3
