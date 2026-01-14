@@ -72,98 +72,98 @@ Cleaned and standardized source data using dbt staging models
 
 # 3️⃣ Snapshot Layer (SCD Type 2)
 
-## Implemented historical tracking using dbt snapshots
+Implemented historical tracking using dbt snapshots
 
-Snapshot:
+## Snapshot:
 
-walmart_fact_snapshot
+- walmart_fact_snapshot
 
-Purpose:
+## Purpose:
 
-Tracks changes to fact data over time
+- Tracks changes to fact data over time
 
-Maintains:
+- Maintains dbt-managed validity fields
 
-dbt_valid_from
+  - dbt_valid_from
 
-dbt_valid_to
+  - dbt_valid_to
 
-Enables Slowly Changing Dimension Type 2 behavior
+- Enables Slowly Changing Dimension Type 2 behavior
 
-4️⃣ Gold Layer (Analytics-Ready Models)
-✅ Dimensions
+# 4️⃣ Gold Layer (Analytics-Ready Models)
+## Dimensions
 
-walmart_date_dim (SCD Type 1)
+## walmart_date_dim (SCD Type 1)
 
-Date ID (YYYYMMDD)
+- Date ID (YYYYMMDD)
 
-Date attributes
+- Date attributes
 
-Holiday flag
+- Holiday flag
 
-Insert / Update timestamps
+- Insert / Update timestamps
 
-walmart_store_dim (SCD Type 1)
+## walmart_store_dim (SCD Type 1)
 
-Store metadata
+- Store metadata
 
-One row per store (latest state only)
+- One row per store (latest state only)
 
-✅ Fact Table
+## Fact Table
 
-walmart_fact_table (SCD Type 2 via Snapshot)
+## walmart_fact_table (SCD Type 2 via Snapshot)
 
-Incremental append strategy
+- Incremental append strategy
 
-Historical versions preserved
+- Historical versions preserved
 
-Tracks:
+- Tracks:
 
-Effective dates
+  - Effective dates
 
-Current record flag
+  - Current record flag
 
-Insert / Update timestamps
+  - Insert / Update timestamps
 
-🧪 Data Quality & Testing
+# 🧪 Data Quality & Testing
 
 Implemented dbt tests on Gold models:
 
-not_null tests on keys and critical columns
+- not_null tests on keys and critical columns
 
-unique and composite uniqueness tests
+- unique and composite uniqueness tests
 
-relationships tests between:
+- relationships tests between:
 
-Fact ↔ Date Dimension
+  - Fact ↔ Date Dimension
 
-Fact ↔ Store Dimension
+  - Fact ↔ Store Dimension
 
-✅ All tests are passing successfully
+-  All tests are passing successfully
 
-🧰 Technology Stack
+# 🧰 Technology Stack
 
-Cloud Storage: AWS S3
+- Cloud Storage: AWS S3
 
-Data Warehouse: Snowflake
+- Data Warehouse: Snowflake
 
-Transformation Tool: dbt (incremental models & snapshots)
+- Transformation Tool: dbt (incremental models & snapshots)
 
-Modeling Approach: Star Schema (Fact + Dimensions)
+- Modeling Approach: Star Schema (Fact + Dimensions)
 
-Version Control: GitHub
+- Version Control: GitHub
 
-💡 Key Engineering Concepts Demonstrated
+# 💡 Key Engineering Concepts Demonstrated
 
-End-to-end ELT pipeline
+- End-to-end ELT pipeline
 
-dbt incremental models
+- dbt incremental models
 
-SCD Type 1 vs SCD Type 2
+- SCD Type 1 vs SCD Type 2
 
-Snapshot-based history tracking
+- Snapshot-based history tracking
 
-Data quality testing
+- Data quality testing
 
-Analytics-ready Gold layer design
+- Analytics-ready Gold layer design
 
