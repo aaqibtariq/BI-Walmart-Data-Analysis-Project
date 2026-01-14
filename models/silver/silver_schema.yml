@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: stg_department
+    columns:
+      - name: store_id
+        tests: [not_null]
+      - name: dept_id
+        tests: [not_null]
+      - name: store_date
+        tests: [not_null]
+    tests:
+      - unique_combination:
+          arguments:
+            columns: ['store_id', 'dept_id', 'store_date']
+
+  - name: stg_stores
+    columns:
+      - name: store_id
+        tests: [not_null, unique]
+      - name: store_type
+        tests: [not_null]
+      - name: store_size
+        tests: [not_null]
+
+  - name: stg_facts
+    columns:
+      - name: store_id
+        tests: [not_null]
+      - name: store_date
+        tests: [not_null]
+    tests:
+      - unique_combination:
+          arguments:
+            columns: ['store_id', 'store_date']
