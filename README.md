@@ -54,7 +54,7 @@ Cleaned and standardized source data using dbt staging models
 
 Models created:
 
-stg_facts
+**stg_facts**
 
 stg_stores
 
