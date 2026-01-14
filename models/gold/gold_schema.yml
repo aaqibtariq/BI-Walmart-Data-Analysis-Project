@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: walmart_store_dim
+    columns:
+      - name: store_id
+        tests: [not_null]
+      - name: dept_id
+        tests: [not_null]
+    tests:
+      - unique_combination:
+          arguments:
+            columns: ['store_id', 'dept_id']
+  - name: walmart_fact_table
+    description: "Gold fact history table built from dbt snapshot (append-only). Contains SCD2-style versions using effective_from/effective_to and is_current flag."
+    columns:
+      - name: store_id
+        description: "Store identifier"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('walmart_store_dim')
+              field: store_id
+
+      - name: store_date
+        description: "Date grain for store metrics"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('walmart_date_dim')
+              field: date
+
+      - name: effective_from
+        description: "Snapshot version start timestamp (dbt_valid_from)"
+        tests:
+          - not_null
+
+      - name: effective_to
+        description: "Snapshot version end timestamp (dbt_valid_to). NULL means current."
+
+      - name: is_current
+        description: "True if this version is the current row for the business key"
+        tests:
+          - not_null
+
+      - name: insert_date
+        description: "When this row was inserted into Gold"
+        tests:
+          - not_null
+
+      - name: update_date
+        description: "When this row was last processed/loaded"
+        tests:
+          - not_null
+
+    tests:
+      # Ensures NO duplicate versions are inserted for the same store+date+effective_from
+      - unique_combination:
+          columns: ['store_id','store_date','effective_from']
+
