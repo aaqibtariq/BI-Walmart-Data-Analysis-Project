@@ -1,5 +1,4 @@
-
-
+```text
 BRONZE
 │
 ├── raw_walmart_data
@@ -19,3 +18,4 @@ GOLD
 ├── walmart_store_dim       (SCD-1)
 ├── walmart_date_dim
 └── walmart_fact_table      (Append-only SCD-2 fact)
+```
