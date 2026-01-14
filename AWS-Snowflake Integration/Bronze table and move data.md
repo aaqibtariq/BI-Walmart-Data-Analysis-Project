@@ -40,7 +40,7 @@ CREATE OR REPLACE TABLE stores_bronze (
 );
 ```
 
-#  features_bronze
+#  facts_bronze
 ```sql
 CREATE OR REPLACE TABLE facts_bronze (
     store        INT,
