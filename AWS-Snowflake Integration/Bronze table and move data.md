@@ -78,7 +78,7 @@ FILE_FORMAT = (FORMAT_NAME = walmart_csv_ff)
 ON_ERROR = 'ABORT_STATEMENT';
 ```
 
-Load fact.csv → features_bronze
+Load fact.csv → facts_bronze
 
 ```sql
 COPY INTO features_bronze
