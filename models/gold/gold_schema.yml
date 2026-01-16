@@ -11,37 +11,36 @@ models:
       - unique_combination:
           arguments:
             columns: ['store_id', 'dept_id']
+
   - name: walmart_fact_table
-    description: "Gold fact history table built from dbt snapshot (append-only). Contains SCD2-style versions using effective_from/effective_to and is_current flag."
+    description: "Gold fact history table built from dbt snapshot (append-only). Stores SCD2 versions using vrsn_start_date/vrsn_end_date."
     columns:
       - name: store_id
         description: "Store identifier"
         tests:
           - not_null
-          - relationships:
-              to: ref('walmart_store_dim')
-              field: store_id
 
-      - name: store_date
-        description: "Date grain for store metrics"
+      - name: dept_id
+        description: "Department identifier"
+        tests:
+          - not_null
+
+      - name: date_id
+        description: "Date surrogate key in YYYYMMDD format (FK to walmart_date_dim.date_id)"
         tests:
           - not_null
           - relationships:
-              to: ref('walmart_date_dim')
-              field: date
+              arguments:
+                to: ref('walmart_date_dim')
+                field: date_id
 
-      - name: effective_from
-        description: "Snapshot version start timestamp (dbt_valid_from)"
+      - name: vrsn_start_date
+        description: "Version start timestamp (dbt_valid_from)"
         tests:
           - not_null
 
-      - name: effective_to
-        description: "Snapshot version end timestamp (dbt_valid_to). NULL means current."
-
-      - name: is_current
-        description: "True if this version is the current row for the business key"
-        tests:
-          - not_null
+      - name: vrsn_end_date
+        description: "Version end timestamp (dbt_valid_to). NULL means current version."
 
       - name: insert_date
         description: "When this row was inserted into Gold"
@@ -54,7 +53,7 @@ models:
           - not_null
 
     tests:
-      # Ensures NO duplicate versions are inserted for the same store+date+effective_from
+      # No duplicate versions for the same store+dept+date+version start
       - unique_combination:
-          columns: ['store_id','store_date','effective_from']
-
+          arguments:
+            columns: ['store_id', 'dept_id', 'date_id', 'vrsn_start_date']
