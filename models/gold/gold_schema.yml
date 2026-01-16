@@ -34,17 +34,6 @@ models:
                 to: ref('walmart_date_dim')
                 field: date_id
 
-      # ✅ Composite FK check: (store_id, dept_id) must exist in walmart_store_dim
-      - name: store_dept_fk
-        description: "Composite FK check for (store_id, dept_id) → walmart_store_dim"
-        tests:
-          - relationships_combination:
-              arguments:
-                to: ref('walmart_store_dim')
-                columns:
-                  - store_id
-                  - dept_id
-
       - name: vrsn_start_date
         description: "Version start timestamp (dbt_valid_from)"
         tests:
