@@ -1,0 +1,63 @@
+# This is source file of all tests done in 
+
+```sql
+version: 2
+
+models:
+  - name: walmart_store_dim
+    columns:
+      - name: store_id
+        tests: [not_null]
+      - name: dept_id
+        tests: [not_null]
+    tests:
+      - unique_combination:
+          arguments:
+            columns: ['store_id', 'dept_id']
+
+  - name: walmart_fact_table
+    description: "Gold fact history table built from dbt snapshot (append-only). Stores SCD2 versions using vrsn_start_date/vrsn_end_date."
+    columns:
+      - name: store_id
+        description: "Store identifier"
+        tests:
+          - not_null
+
+      - name: dept_id
+        description: "Department identifier"
+        tests:
+          - not_null
+
+      - name: date_id
+        description: "Date surrogate key in YYYYMMDD format (FK to walmart_date_dim.date_id)"
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('walmart_date_dim')
+                field: date_id
+
+      - name: vrsn_start_date
+        description: "Version start timestamp (dbt_valid_from)"
+        tests:
+          - not_null
+
+      - name: vrsn_end_date
+        description: "Version end timestamp (dbt_valid_to). NULL means current version."
+
+      - name: insert_date
+        description: "When this row was inserted into Gold"
+        tests:
+          - not_null
+
+      - name: update_date
+        description: "When this row was last processed/loaded"
+        tests:
+          - not_null
+
+    tests:
+      # No duplicate versions for the same store+dept+date+version start
+      - unique_combination:
+          arguments:
+            columns: ['store_id', 'dept_id', 'date_id', 'vrsn_start_date']
+```
