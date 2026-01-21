@@ -127,6 +127,9 @@ I made some changes in fact and run test
 
 I fixed those back again and tried
 
+## 🏗 Architecture Diagram
+![Before](images/Before_unique_combination_test.png.png)
+
 <p align="center">
   <img src="images/after unique combination test.png" width="700"/>
 </p>
