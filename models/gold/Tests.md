@@ -118,18 +118,9 @@ where (store_id, dept_id, date_id, vrsn_start_date, insert_date) in (
 
 I made some changes in fact and run test
 
-<p align="center">
-  <img src="BI-Walmart-Data-Analysis-Project/images/Before_unique_combination_test.png" width="700"/>
-</p>
-
-
+https://github.com/aaqibtariq/BI-Walmart-Data-Analysis-Project/blob/main/images/Before_unique_combination_test.png
 
 
 I fixed those back again and tried
 
-
-
-<p align="center">
-  <img src="images/after unique combination test.png" width="700"/>
-</p>
-
+https://github.com/aaqibtariq/BI-Walmart-Data-Analysis-Project/blob/main/images/after%20unique%20combination%20test.png
