@@ -1,5 +1,7 @@
 # This is source file of all tests done in 
 
+models/gold/gold_schema.yml
+
 ```sql
 version: 2
 
@@ -60,4 +62,54 @@ models:
       - unique_combination:
           arguments:
             columns: ['store_id', 'dept_id', 'date_id', 'vrsn_start_date']
+```
+
+# Test 1
+
+For No duplicate versions for the same store+dept+date+version start Test
+
+```sql
+    tests:
+      # No duplicate versions for the same store+dept+date+version start
+      - unique_combination:
+          arguments:
+            columns: ['store_id', 'dept_id', 'date_id', 'vrsn_start_date']
+```
+
+```sql
+1) Pick one existing row
+select *
+from WALMART_DB.GOLD.walmart_fact_table
+limit 1;
+```
+
+2) Insert it back (creates a duplicate)
+```sql
+insert into WALMART_DB.GOLD.walmart_fact_table
+select *
+from WALMART_DB.GOLD.walmart_fact_table
+qualify row_number() over (order by vrsn_start_date) = 1;
+```
+
+3) Run the test (it should FAIL)
+
+```sql
+dbt test --select walmart_fact_table
+```
+
+5) Remove the duplicate (cleanup) Use a de-dupe delete (keep 1 row, delete extras):
+```sql
+delete from WALMART_DB.GOLD.walmart_fact_table
+where (store_id, dept_id, date_id, vrsn_start_date, insert_date) in (
+  select store_id, dept_id, date_id, vrsn_start_date, insert_date
+  from (
+    select *,
+      row_number() over (
+        partition by store_id, dept_id, date_id, vrsn_start_date
+        order by insert_date
+      ) as rn
+    from WALMART_DB.GOLD.walmart_fact_table
+  )
+  where rn > 1
+);
 ```
