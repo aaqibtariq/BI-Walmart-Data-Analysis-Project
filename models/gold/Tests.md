@@ -113,3 +113,20 @@ where (store_id, dept_id, date_id, vrsn_start_date, insert_date) in (
   where rn > 1
 );
 ```
+
+# Picture
+
+I made some changes in fact and run test
+
+<p align="center">
+  <img src="images/Before unique combination test.png" width="700"/>
+</p>
+
+
+
+I fixed those back again and tried
+
+<p align="center">
+  <img src="images/after unique combination test.png" width="700"/>
+</p>
+
