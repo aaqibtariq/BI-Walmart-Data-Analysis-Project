@@ -119,7 +119,7 @@ where (store_id, dept_id, date_id, vrsn_start_date, insert_date) in (
 I made some changes in fact and run test
 
 <p align="center">
-  <img src="images/Before_unique_combination_test.png" width="700"/>
+  <img src="BI-Walmart-Data-Analysis-Project/images/Before_unique_combination_test.png" width="700"/>
 </p>
 
 
@@ -127,8 +127,7 @@ I made some changes in fact and run test
 
 I fixed those back again and tried
 
-## 🏗 Architecture Diagram
-![Before](images/Before_unique_combination_test.png)
+
 
 <p align="center">
   <img src="images/after unique combination test.png" width="700"/>
