@@ -119,7 +119,7 @@ where (store_id, dept_id, date_id, vrsn_start_date, insert_date) in (
 I made some changes in fact and run test
 
 <p align="center">
-  <img src="images/Before unique combination test.png" width="700"/>
+  <img src="images/Before_unique_combination_test.png" width="700"/>
 </p>
 
 
