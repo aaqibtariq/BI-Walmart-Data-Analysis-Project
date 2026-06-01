@@ -17,10 +17,7 @@ The pipeline is designed for **scalability, data quality, and real-world analyti
 
 ## 🏗️ End-to-End System Design – Walmart Business Intelligence & Analytics Platform
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/aaqibtariq/BI-Walmart-Data-Analysis-Project/main/images/Architecture.png" width="850"/>
-</p>
-
+![BI Walmart System Design](https://raw.githubusercontent.com/aaqibtariq/BI-Walmart-Data-Analysis-Project/main/images/BI%20walmart%20SD.png)
 ---
 
 ## 🏗️ Architecture 
